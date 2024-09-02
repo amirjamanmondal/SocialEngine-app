@@ -25,11 +25,9 @@ const DeleteImage = async (req, res) => {
         }
 
         const dir = `./upload/images/${name}`
-        if (!dir) {
-            return res.status(400).json({ message: `${name} file not found ` })
-        }
+
         fs.unlinkSync(dir)
-        const imagesRemain = await (await Image.find({ username: user.name })).length
+        const imagesRemain = await Image.find({ username: user.name }).length
         res.status(200).json({ message: `${imagesRemain} images are remain ` })
 
     } catch (error) {
