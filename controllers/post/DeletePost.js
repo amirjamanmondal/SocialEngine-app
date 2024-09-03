@@ -24,7 +24,7 @@ const DeletePost = async (req, res) => {
         });
 
         fs.unlinkSync(dir)
-        const selectPostToDelete = await Post.findByIdAndDelete({ _id: req.params.id })
+        await Post.findByIdAndDelete({ _id: req.params.id })
         res.status(200).json({ message: `content deleted successfully`, userName })
     } catch (error) {
         const errorMessage = error.message;

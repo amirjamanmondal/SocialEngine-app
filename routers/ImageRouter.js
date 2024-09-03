@@ -13,8 +13,7 @@ router.post('/images/upload', AuthUser, upload.single('image'), UploadImage)
 router.get('/images', AuthUser, GetImages)
 router.post('/image/delete/:name', AuthUser, DeleteImage)
 router.get('/image/:filename', AuthUser)
-router.get('/images')
-router.put('/image/:filename')
+
 
 
 const routeImage = router;

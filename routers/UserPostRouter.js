@@ -9,7 +9,6 @@ const router = express.Router();
 
 router.post('/post', AuthUser, upload.single('post'), PublishPost)
 router.delete('/post/:id', AuthUser, DeletePost)
-
 router.get('/post', AuthUser, GetAllPosts)
 
 const PostRouter = router;

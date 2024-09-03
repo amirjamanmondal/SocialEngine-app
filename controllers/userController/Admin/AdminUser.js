@@ -45,7 +45,7 @@ const AdminUserSignin = async (req, res) => {
         bcrypt.compare(password, user.password)
 
 
-        const token = jwt.sign({ userCredential }, process.env.secretKey, { expiresIn: '1h' })
+        const token = jwt.sign({ email, password }, process.env.secretKey, { expiresIn: '1h' })
 
         res.cookie('token', token, { httpOnly: true });
 
