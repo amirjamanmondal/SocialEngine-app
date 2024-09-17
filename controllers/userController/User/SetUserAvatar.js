@@ -12,7 +12,7 @@ const SetUserAvatar = async (req, res) => {
         const decodedToken = jwt.verify(token, process.env.secretKey);
         const userName = decodedToken.userName;
         const user = await Register.findOne({ userName: userName })
-        user.avatar = `/avatar/${req.file.filename}`;
+        user.avatar = `http://localhost:8000/avatar/${req.file.filename}`;
         user.save();
         res.status(200).json({ message: `avatar updated successfully ` });
     } catch (error) {

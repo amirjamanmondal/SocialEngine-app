@@ -5,7 +5,6 @@ const AuthUser = require('../middlewares/AuthUser')
 const DeleteUser = require('../controllers/userController/Admin/DeleteUser')
 const GetUserOne = require('../controllers/userController/Admin/GetUserOne')
 
-
 const router = express.Router()
 
 router.post('/signup', AdminUserController.AdminUserSignup)

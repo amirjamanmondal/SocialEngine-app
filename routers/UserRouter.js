@@ -4,6 +4,7 @@ const AuthUser = require('../middlewares/AuthUser')
 const upload = require('../utils/avataUpload')
 const router = express.Router()
 
+
 router.post('/signup', RegisterUser.UserSignup)
 router.post('/login', RegisterUser.UserSignin)
 router.post('/logout', AuthUser, RegisterUser.UserLogout)
@@ -12,7 +13,8 @@ router.put('/username/update', AuthUser, RegisterUser.UserUpdateUsername)
 router.put('/email/update', AuthUser, RegisterUser.UserUpdateEmail)
 router.put('/password/update', AuthUser, RegisterUser.UserUpdatePassword)
 router.put('/avatar/upload', AuthUser, upload.single('avatar'), RegisterUser.SetUserAvatar)
-router.get('/user', AuthUser, RegisterUser.GetUserInfo)
+router.get('/', AuthUser, RegisterUser.GetUserInfo)
+router.get('/all', RegisterUser.GetallUser)
 
 
 const routerUser = router;

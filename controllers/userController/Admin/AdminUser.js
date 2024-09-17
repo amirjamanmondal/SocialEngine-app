@@ -47,8 +47,7 @@ const AdminUserSignin = async (req, res) => {
 
         const token = jwt.sign({ email, password }, process.env.secretKey, { expiresIn: '1h' })
 
-        res.cookie('token', token, { httpOnly: true });
-
+        res.cookie('token', token);
 
         res.status(200).json({ message: `user login successful `, token })
     }

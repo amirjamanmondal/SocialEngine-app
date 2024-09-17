@@ -7,6 +7,7 @@ const UserUpdateUsername = require('./UserUpdateUsername')
 const UserUpdatePassword = require('./UserUpdatePassword')
 const SetUserAvatar = require('./SetUserAvatar')
 const GetUserInfo = require('./GetUserInfo')
+const GetallUser = require('./GetallUser')
 
 
 
@@ -20,6 +21,7 @@ const RegisterUser = {
     UserUpdateName,
     SetUserAvatar,
     GetUserInfo,
+    GetallUser,
 }
 
 module.exports = RegisterUser;
