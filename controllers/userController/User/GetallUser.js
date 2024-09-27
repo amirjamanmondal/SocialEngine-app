@@ -9,7 +9,9 @@ const GetallUser = async (req, res) => {
         if (!users) {
             return res.status(401).json({ message: 'no user found ' })
         }
-        res.status(200).json(users)
+
+        const token = req.cookies.token;
+        res.status(200).json({ users, token })
     } catch (error) {
         const errorMessage = error.message;
         res.status(500).json({ errorMessage })

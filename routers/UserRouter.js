@@ -13,7 +13,7 @@ router.put('/username/update', AuthUser, RegisterUser.UserUpdateUsername)
 router.put('/email/update', AuthUser, RegisterUser.UserUpdateEmail)
 router.put('/password/update', AuthUser, RegisterUser.UserUpdatePassword)
 router.put('/avatar/upload', AuthUser, upload.single('avatar'), RegisterUser.SetUserAvatar)
-router.get('/', AuthUser, RegisterUser.GetUserInfo)
+router.get('/info', AuthUser, RegisterUser.GetUserInfo)
 router.get('/all', RegisterUser.GetallUser)
 
 
