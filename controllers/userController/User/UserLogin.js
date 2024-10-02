@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const Register = require('../../../model/userModel/Register')
+const Register = require('../../../model/userModel/Register');
+const generateTokenandSetCookie = require('../../../utils/generateTokenSetCookies');
 
 
 
@@ -16,22 +17,17 @@ const UserSignin = async (req, res) => {
         if (!user) {
             return res.status(401).json({ message: 'user not found and failed to login' })
         }
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        const isPasswordMatch = await bcrypt.compare(password, user?.password ||" ");
 
         if (!isPasswordMatch) {
-            return res.status(401).json({ message: 'Password is invalid ' })
+            return res.status(401).json({ message: 'Password is invalid' })
         }
 
-        const token = jwt.sign({ userName, password }, process.env.secretKey, { expiresIn: '1h' })
-        const cookieOptions = {
-            maxAge: 3600000, // 1 hour
-            httpOnly: true,
-            secure: true, // Use HTTPS for production
-            sameSite: 'Lax'
-        };
+        generateTokenandSetCookie(user.id, res);
+        
+        let Name = user.name;
 
-        res.cookie('token', token, cookieOptions);
-        res.status(200).json({ message: `user login successful `, token, })
+        res.status(200).json({ message: `user login successful `, Name })
 
 
     } catch (error) {
